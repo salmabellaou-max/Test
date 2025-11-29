@@ -26,7 +26,7 @@ public class UserService {
         this.userRepository = userRepository;
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
-        this.laboratoryRepository laboratoryRepository;
+        this.laboratoryRepository = laboratoryRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
