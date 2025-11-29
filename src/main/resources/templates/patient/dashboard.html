@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - MyWelly</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>MyWelly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/patient/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/patient/search}">Find Doctors</a></li>
+                <li><a th:href="@{/patient/profile}">Profile</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: inherit; font-weight: 500;">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 style="color: var(--primary-green); margin-bottom: 2rem;">
+                Welcome, <span th:text="${patient.fullName}">Patient</span>!
+            </h1>
+
+            <div class="alert alert-success" th:if="${success}" th:text="${success}"></div>
+            <div class="alert alert-error" th:if="${error}" th:text="${error}"></div>
+
+            <!-- Upcoming Appointments -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Upcoming Appointments</h2>
+                </div>
+
+                <div th:if="${upcomingAppointments.empty}">
+                    <p>No upcoming appointments.</p>
+                    <a th:href="@{/patient/search}" class="btn btn-primary">Find a Doctor</a>
+                </div>
+
+                <ul class="appointment-list" th:if="${!upcomingAppointments.empty}">
+                    <li class="appointment-item" th:each="appt : ${upcomingAppointments}">
+                        <div class="appointment-header">
+                            <div>
+                                <div class="appointment-doctor" th:text="${appt.doctor.name}">Dr. Name</div>
+                                <div class="doctor-specialty" th:text="${appt.doctor.specialty}">Specialty</div>
+                                <div class="doctor-location">📍 <span th:text="${appt.doctor.location}">Location</span></div>
+                            </div>
+                            <span class="appointment-status status-scheduled">Scheduled</span>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <strong>📅 Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
+                            <strong>🕐 Time:</strong> <span th:text="${appt.appointmentTime}">Time</span><br>
+                            <strong>💰 Fee:</strong> <span th:text="${appt.doctor.consultationFee}">Fee</span> MAD
+                        </div>
+                        <form th:action="@{/appointment/cancel/{id}(id=${appt.id})}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this appointment?')">Cancel Appointment</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Past Appointments -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Appointment History</h2>
+                </div>
+
+                <div th:if="${pastAppointments.empty}">
+                    <p>No past appointments.</p>
+                </div>
+
+                <ul class="appointment-list" th:if="${!pastAppointments.empty}">
+                    <li class="appointment-item" th:each="appt : ${pastAppointments}"
+                        th:classappend="${appt.status == 'COMPLETED' ? 'completed' : 'cancelled'}">
+                        <div class="appointment-header">
+                            <div>
+                                <div class="appointment-doctor" th:text="${appt.doctor.name}">Dr. Name</div>
+                                <div class="doctor-specialty" th:text="${appt.doctor.specialty}">Specialty</div>
+                            </div>
+                            <span class="appointment-status"
+                                  th:classappend="${appt.status == 'COMPLETED' ? 'status-completed' : 'status-cancelled'}"
+                                  th:text="${appt.status}">Status</span>
+                        </div>
+                        <div>
+                            <strong>Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
+                            <strong>Time:</strong> <span th:text="${appt.appointmentTime}">Time</span>
+                        </div>
+                        <div th:if="${appt.status == 'COMPLETED'}">
+                            <a th:href="@{/review/doctor/{id}(id=${appt.doctor.id})}" class="btn btn-secondary" style="margin-top: 1rem;">Leave a Review</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+    </footer>
+</body>
+</html>

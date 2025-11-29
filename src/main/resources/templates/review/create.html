@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave a Review - MyWelly</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>MyWelly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/patient/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/patient/search}">Find Doctors</a></li>
+                <li><a th:href="@{/patient/profile}">Profile</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: inherit; font-weight: 500;">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card" style="max-width: 600px; margin: 2rem auto;">
+                <div class="card-header">
+                    <h2>Leave a Review</h2>
+                </div>
+
+                <div style="background: var(--off-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${doctor.name}">Dr. Name</h3>
+                    <div th:text="${doctor.specialty}">Specialty</div>
+                </div>
+
+                <form th:action="@{/review/doctor/{id}(id=${doctor.id})}" method="post">
+                    <div class="form-group">
+                        <label for="rating">Rating (1-5 stars)</label>
+                        <select class="form-control" id="rating" name="rating" required>
+                            <option value="">Select rating</option>
+                            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                            <option value="4">⭐⭐⭐⭐ Very Good</option>
+                            <option value="3">⭐⭐⭐ Good</option>
+                            <option value="2">⭐⭐ Fair</option>
+                            <option value="1">⭐ Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Your Review</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="5" required
+                                  placeholder="Share your experience with this doctor..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <a th:href="@{/patient/dashboard}" class="btn btn-secondary" style="flex: 1;">Cancel</a>
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+    </footer>
+</body>
+</html>

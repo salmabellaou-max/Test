@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title != null ? title + ' - MyWelly' : 'MyWelly - Healthcare Booking Platform'}">MyWelly</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>MyWelly</span>
+            </a>
+
+            <ul class="nav-links">
+                <li sec:authorize="isAnonymous()">
+                    <a th:href="@{/}">Home</a>
+                </li>
+                <li sec:authorize="isAnonymous()">
+                    <a th:href="@{/login}">Login</a>
+                </li>
+                <li sec:authorize="isAnonymous()">
+                    <a th:href="@{/signup}">Sign Up</a>
+                </li>
+                <li sec:authorize="hasAuthority('PATIENT')">
+                    <a th:href="@{/patient/dashboard}">Dashboard</a>
+                </li>
+                <li sec:authorize="hasAuthority('PATIENT')">
+                    <a th:href="@{/patient/search}">Find Doctors</a>
+                </li>
+                <li sec:authorize="hasAuthority('DOCTOR')">
+                    <a th:href="@{/doctor/dashboard}">Dashboard</a>
+                </li>
+                <li sec:authorize="hasAuthority('LABORATORY')">
+                    <a th:href="@{/laboratory/dashboard}">Dashboard</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/{type}/profile(type=${#authentication.authorities[0].authority.toLowerCase()})}">Profile</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: inherit; font-weight: 500;">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Flash Messages -->
+        <div class="container">
+            <div class="alert alert-success" th:if="${success}" th:text="${success}"></div>
+            <div class="alert alert-error" th:if="${error}" th:text="${error}"></div>
+        </div>
+
+        <!-- Page Content -->
+        <div layout:fragment="content">
+            <!-- Page-specific content goes here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+    </footer>
+</body>
+</html>
