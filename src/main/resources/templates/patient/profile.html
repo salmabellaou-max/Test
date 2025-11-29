@@ -43,7 +43,7 @@
                     <div><strong>Email:</strong> <span th:text="${user.email}">Email</span></div>
                     <div><strong>Phone:</strong> <span th:text="${patient.phoneNumber}">Phone</span></div>
                     <div><strong>Gender:</strong> <span th:text="${patient.gender}">Gender</span></div>
-                    <div><strong>Date of Birth:</strong> <span th:text="${patient.dateOfBirth}">DOB</span></div>
+                    <div><strong>Date of Birth:</strong> <span th:text="${#temporals.format(patient.dateOfBirth, 'dd/MM/yyyy')}">01/01/1990</span></div>
                     <div><strong>ID Number:</strong> <span th:text="${patient.idNumber}">ID</span></div>
                 </div>
             </div>
@@ -58,6 +58,20 @@
                         <input type="email" class="form-control" id="email" name="email" th:value="${user.email}" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Email</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Update Phone Number</h2>
+                </div>
+                <form th:action="@{/patient/profile/update-phone}" method="post">
+                    <div class="form-group">
+                        <label for="phone">New Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phoneNumber" th:value="${patient.phoneNumber}" required pattern="^\+?[0-9]{10,15}$">
+                        <small style="color: #666;">Format: +212612345678</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Phone Number</button>
                 </form>
             </div>
 

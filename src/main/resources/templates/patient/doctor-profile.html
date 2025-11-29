@@ -36,28 +36,28 @@
                     <div>
                         <h1 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${doctor.name}">Dr. Name</h1>
                         <div class="doctor-specialty" style="font-size: 1.3rem; margin-bottom: 0.5rem;" th:text="${doctor.specialty}">Specialty</div>
-                        <div class="doctor-location" style="font-size: 1.1rem;">📍 <span th:text="${doctor.location}">Location</span></div>
+                        <div class="doctor-location" style="font-size: 1.1rem; color: #666;"><span th:text="${doctor.location}">Location</span></div>
                     </div>
                     <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="font-size: 1.1rem;">Book Appointment</a>
                 </div>
 
                 <div class="doctor-rating" style="font-size: 1.2rem; margin: 1.5rem 0;">
-                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                    <span th:text="${doctor.averageRating}">4.5</span>
-                    <span>(<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
+                    <span style="font-weight: 600; color: var(--primary-green);">Rating: </span>
+                    <span th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">4.5</span>
+                    <span>/5.0 (<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                     <div>
-                        <strong>📞 Phone:</strong><br>
+                        <strong>Phone:</strong><br>
                         <span th:text="${doctor.phoneNumber}">Phone</span>
                     </div>
                     <div>
-                        <strong>🕐 Working Hours:</strong><br>
+                        <strong>Working Hours:</strong><br>
                         <span th:text="${doctor.workingHours}">Hours</span>
                     </div>
                     <div>
-                        <strong>💰 Consultation Fee:</strong><br>
+                        <strong>Consultation Fee:</strong><br>
                         <span style="font-size: 1.3rem; color: var(--primary-green); font-weight: bold;" th:text="${doctor.consultationFee}">300</span> MAD
                     </div>
                 </div>
@@ -81,12 +81,10 @@
                     <div class="review-card" th:each="review : ${reviews}">
                         <div class="review-header">
                             <span class="review-author" th:text="${review.patient.fullName}">Patient Name</span>
-                            <span class="review-rating">
-                                <span th:each="i : ${#numbers.sequence(1, review.rating)}">⭐</span>
-                            </span>
+                            <span class="review-rating" th:text="${review.rating} + '/5'">5/5</span>
                         </div>
                         <div class="review-comment" th:text="${review.comment}">Comment</div>
-                        <div style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;" th:text="${review.createdAt}">Date</div>
+                        <div style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;" th:text="${#temporals.format(review.createdAt, 'dd/MM/yyyy')}">Date</div>
                     </div>
                 </div>
             </div>

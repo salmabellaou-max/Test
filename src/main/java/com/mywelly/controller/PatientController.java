@@ -18,15 +18,18 @@ public class PatientController {
     private final PatientService patientService;
     private final DoctorService doctorService;
     private final AppointmentService appointmentService;
+    private final ReviewService reviewService;
 
     public PatientController(UserService userService,
                             PatientService patientService,
                             DoctorService doctorService,
-                            AppointmentService appointmentService) {
+                            AppointmentService appointmentService,
+                            ReviewService reviewService) {
         this.userService = userService;
         this.patientService = patientService;
         this.doctorService = doctorService;
         this.appointmentService = appointmentService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping("/dashboard")
@@ -78,7 +81,10 @@ public class PatientController {
         Doctor doctor = doctorService.getDoctorById(id)
                 .orElseThrow(() -> new RuntimeException("Doctor not found"));
 
+        List<Review> reviews = reviewService.getReviewsForDoctor(doctor);
+
         model.addAttribute("doctor", doctor);
+        model.addAttribute("reviews", reviews);
         return "patient/doctor-profile";
     }
 
@@ -105,6 +111,22 @@ public class PatientController {
 
         userService.updateEmail(user.getId(), newEmail);
         redirectAttributes.addFlashAttribute("success", "Email updated successfully");
+
+        return "redirect:/patient/profile";
+    }
+
+    @PostMapping("/profile/update-phone")
+    public String updatePhoneNumber(Authentication authentication,
+                                   @RequestParam("phoneNumber") String newPhoneNumber,
+                                   RedirectAttributes redirectAttributes) {
+        User user = userService.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Patient patient = patientService.getPatientByUserId(user.getId())
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+
+        patientService.updatePhoneNumber(patient.getId(), newPhoneNumber);
+        redirectAttributes.addFlashAttribute("success", "Phone number updated successfully");
 
         return "redirect:/patient/profile";
     }

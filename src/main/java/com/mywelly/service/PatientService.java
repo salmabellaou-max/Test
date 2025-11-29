@@ -36,4 +36,11 @@ public class PatientService {
                 .orElseThrow(() -> new RuntimeException("Patient not found"));
         return patient.getIsBlocked();
     }
+
+    public void updatePhoneNumber(Long patientId, String newPhoneNumber) {
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+        patient.setPhoneNumber(newPhoneNumber);
+        patientRepository.save(patient);
+    }
 }
