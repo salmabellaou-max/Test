@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -44,10 +45,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/signup", "/login", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
-                .requestMatchers("/patient/**").hasAuthority("PATIENT")
-                .requestMatchers("/doctor/**").hasAuthority("DOCTOR")
-                .requestMatchers("/laboratory/**").hasAuthority("LABORATORY")
+                .requestMatchers(
+                    new AntPathRequestMatcher("/"),
+                    new AntPathRequestMatcher("/signup"),
+                    new AntPathRequestMatcher("/login"),
+                    new AntPathRequestMatcher("/css/**"),
+                    new AntPathRequestMatcher("/js/**"),
+                    new AntPathRequestMatcher("/images/**"),
+                    new AntPathRequestMatcher("/h2-console/**")
+                ).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/patient/**")).hasAuthority("PATIENT")
+                .requestMatchers(new AntPathRequestMatcher("/doctor/**")).hasAuthority("DOCTOR")
+                .requestMatchers(new AntPathRequestMatcher("/laboratory/**")).hasAuthority("LABORATORY")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -64,10 +73,10 @@ public class SecurityConfig {
                 .permitAll()
             )
             .csrf(csrf -> csrf
-                .ignoringRequestMatchers("/h2-console/**")
+                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
             )
             .headers(headers -> headers
-                .frameOptions().sameOrigin()
+                .frameOptions(frameOptions -> frameOptions.sameOrigin())
             );
 
         return http.build();
