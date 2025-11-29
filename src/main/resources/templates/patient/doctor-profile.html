@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${doctor.name} + ' - MyWelly'">Doctor Profile</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>MyWelly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/patient/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/patient/search}">Find Doctors</a></li>
+                <li><a th:href="@{/patient/profile}">Profile</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: inherit; font-weight: 500;">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <a th:href="@{/patient/search}" style="color: var(--primary-green); margin-bottom: 1rem; display: inline-block;">← Back to Search</a>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div>
+                        <h1 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${doctor.name}">Dr. Name</h1>
+                        <div class="doctor-specialty" style="font-size: 1.3rem; margin-bottom: 0.5rem;" th:text="${doctor.specialty}">Specialty</div>
+                        <div class="doctor-location" style="font-size: 1.1rem;">📍 <span th:text="${doctor.location}">Location</span></div>
+                    </div>
+                    <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="font-size: 1.1rem;">Book Appointment</a>
+                </div>
+
+                <div class="doctor-rating" style="font-size: 1.2rem; margin: 1.5rem 0;">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span th:text="${doctor.averageRating}">4.5</span>
+                    <span>(<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                    <div>
+                        <strong>📞 Phone:</strong><br>
+                        <span th:text="${doctor.phoneNumber}">Phone</span>
+                    </div>
+                    <div>
+                        <strong>🕐 Working Hours:</strong><br>
+                        <span th:text="${doctor.workingHours}">Hours</span>
+                    </div>
+                    <div>
+                        <strong>💰 Consultation Fee:</strong><br>
+                        <span style="font-size: 1.3rem; color: var(--primary-green); font-weight: bold;" th:text="${doctor.consultationFee}">300</span> MAD
+                    </div>
+                </div>
+
+                <div th:if="${doctor.certificates}">
+                    <h3 style="color: var(--primary-green); margin: 2rem 0 1rem;">Certificates & Qualifications</h3>
+                    <p th:text="${doctor.certificates}">Certificates</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Patient Reviews</h2>
+                </div>
+
+                <div th:if="${reviews.empty}">
+                    <p>No reviews yet. Be the first to leave a review!</p>
+                </div>
+
+                <div th:if="${!reviews.empty}">
+                    <div class="review-card" th:each="review : ${reviews}">
+                        <div class="review-header">
+                            <span class="review-author" th:text="${review.patient.fullName}">Patient Name</span>
+                            <span class="review-rating">
+                                <span th:each="i : ${#numbers.sequence(1, review.rating)}">⭐</span>
+                            </span>
+                        </div>
+                        <div class="review-comment" th:text="${review.comment}">Comment</div>
+                        <div style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;" th:text="${review.createdAt}">Date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MyWelly</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>MyWelly</span>
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/signup}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card" style="max-width: 500px; margin: 3rem auto;">
+                <div class="card-header">
+                    <h2>Login to MyWelly</h2>
+                </div>
+
+                <div class="alert alert-success" th:if="${param.success}">
+                    Account created successfully! Please login.
+                </div>
+                <div class="alert alert-success" th:if="${param.logout}">
+                    You have been logged out successfully.
+                </div>
+                <div class="alert alert-error" th:if="${param.error}">
+                    Invalid email or password.
+                </div>
+
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="username">Email</label>
+                        <input type="email" class="form-control" id="username" name="username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+
+                <p style="text-align: center; margin-top: 1.5rem;">
+                    Don't have an account? <a th:href="@{/signup}" style="color: var(--primary-green); font-weight: 600;">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+    </footer>
+</body>
+</html>
