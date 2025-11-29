@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${doctor.name} + ' - MyWelly'">Doctor Profile</title>
+    <title th:text="${laboratory.labName} + ' - MyWelly'">Laboratory Profile</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -27,42 +27,33 @@
 
     <main>
         <div class="container">
-            <a th:href="@{/patient/search}" style="color: var(--primary-green); margin-bottom: 1rem; display: inline-block;">← Back to Search</a>
+            <a th:href="@{/patient/search-labs}" style="color: var(--primary-green); margin-bottom: 1rem; display: inline-block;">← Back to Laboratories</a>
 
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: start;">
-                    <div>
-                        <h1 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${doctor.name}">Dr. Name</h1>
-                        <div class="doctor-specialty" style="font-size: 1.3rem; margin-bottom: 0.5rem;" th:text="${doctor.specialty}">Specialty</div>
-                        <div class="doctor-location" style="font-size: 1.1rem; color: #666;"><span th:text="${doctor.location}">Location</span></div>
-                    </div>
-                    <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="font-size: 1.1rem;">Book Appointment</a>
+                <div>
+                    <h1 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${laboratory.labName}">Lab Name</h1>
+                    <div class="doctor-location" style="font-size: 1.1rem; color: #666;"><span th:text="${laboratory.location}">Location</span></div>
                 </div>
 
                 <div class="doctor-rating" style="font-size: 1.2rem; margin: 1.5rem 0;">
                     <span style="font-weight: 600; color: var(--primary-green);">Rating: </span>
-                    <span th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">4.5</span>
-                    <span>/5.0 (<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
+                    <span th:text="${#numbers.formatDecimal(laboratory.averageRating, 1, 1)}">4.5</span>
+                    <span>/5.0 (<span th:text="${laboratory.totalReviews}">10</span> reviews)</span>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                     <div>
                         <strong>Phone:</strong><br>
-                        <span th:text="${doctor.phoneNumber}">Phone</span>
+                        <span th:text="${laboratory.phoneNumber}">Phone</span>
                     </div>
                     <div>
                         <strong>Working Hours:</strong><br>
-                        <span th:text="${doctor.workingHours}">Hours</span>
+                        <span th:text="${laboratory.workingHours}">Hours</span>
                     </div>
                     <div>
-                        <strong>Consultation Fee:</strong><br>
-                        <span style="font-size: 1.3rem; color: var(--primary-green); font-weight: bold;" th:text="${doctor.consultationFee}">300</span> MAD
+                        <strong>Location:</strong><br>
+                        <span th:text="${laboratory.location}">Location</span>
                     </div>
-                </div>
-
-                <div th:if="${doctor.certificates}">
-                    <h3 style="color: var(--primary-green); margin: 2rem 0 1rem;">Certificates & Qualifications</h3>
-                    <p th:text="${doctor.certificates}">Certificates</p>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Doctors - MyWelly</title>
+    <title>Find Laboratories - MyWelly</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -28,23 +28,12 @@
 
     <main>
         <div class="container">
-            <h1 style="color: var(--primary-green); margin-bottom: 2rem;">Find Doctors</h1>
+            <h1 style="color: var(--primary-green); margin-bottom: 2rem;">Find Laboratories</h1>
 
             <!-- Search Form -->
             <div class="search-section">
-                <form th:action="@{/patient/search}" method="get">
+                <form th:action="@{/patient/search-labs}" method="get">
                     <div class="filters">
-                        <div class="form-group">
-                            <label>Specialty</label>
-                            <select name="specialty" class="form-control" onchange="this.form.submit()" required>
-                                <option value="">Select Specialty</option>
-                                <option th:each="spec : ${specialties}"
-                                        th:value="${spec}"
-                                        th:text="${spec}"
-                                        th:selected="${spec == selectedSpecialty}">Specialty</option>
-                            </select>
-                        </div>
-
                         <div class="form-group">
                             <label>City</label>
                             <select name="location" class="form-control" onchange="this.form.submit()">
@@ -56,16 +45,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label>Min Price (MAD)</label>
-                            <input type="number" name="minPrice" class="form-control" th:value="${minPrice}" placeholder="0">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Max Price (MAD)</label>
-                            <input type="number" name="maxPrice" class="form-control" th:value="${maxPrice}" placeholder="1000">
-                        </div>
-
                         <div class="form-group" style="align-self: flex-end;">
                             <button type="submit" class="btn btn-primary" style="width: 100%;">Filter</button>
                         </div>
@@ -75,28 +54,30 @@
 
             <!-- Results -->
             <h2 style="color: var(--primary-green); margin: 2rem 0 1rem;">
-                <span th:text="${doctors.size()}">0</span> Doctors Found
+                <span th:text="${laboratories.size()}">0</span> Laboratories Found
             </h2>
 
             <div class="doctor-grid">
-                <div class="doctor-card" th:each="doctor : ${doctors}">
+                <div class="doctor-card" th:each="lab : ${laboratories}">
                     <div class="doctor-info">
-                        <h3 th:text="${doctor.name}">Dr. Name</h3>
-                        <div class="doctor-specialty" th:text="${doctor.specialty}">Specialty</div>
-                        <div class="doctor-location"><span th:text="${doctor.location}">Location</span></div>
+                        <h3 th:text="${lab.labName}">Lab Name</h3>
+                        <div class="doctor-location"><span th:text="${lab.location}">Location</span></div>
 
                         <div class="doctor-rating">
-                            <span class="rating-value" th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">4.5</span>
-                            <span class="rating-text">(<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
+                            <span class="rating-value" th:text="${#numbers.formatDecimal(lab.averageRating, 1, 1)}">4.5</span>
+                            <span class="rating-text">(<span th:text="${lab.totalReviews}">10</span> reviews)</span>
                         </div>
 
-                        <div class="doctor-price">
-                            <span class="price-value" th:text="${doctor.consultationFee}">300</span> <span class="currency">MAD</span>
+                        <div style="margin-top: 1rem;">
+                            <strong>Working Hours:</strong> <span th:text="${lab.workingHours}">9:00-17:00</span>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <strong>Phone:</strong> <span th:text="${lab.phoneNumber}">+212...</span>
                         </div>
 
                         <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                            <a th:href="@{/patient/doctor/{id}(id=${doctor.id})}" class="btn btn-outline" style="flex: 1;">View Profile</a>
-                            <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="flex: 1;">Book Appointment</a>
+                            <a th:href="@{/patient/laboratory/{id}(id=${lab.id})}" class="btn btn-outline" style="flex: 1;">View Profile</a>
                         </div>
                     </div>
                 </div>

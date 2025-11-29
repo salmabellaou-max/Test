@@ -19,17 +19,20 @@ public class PatientController {
     private final DoctorService doctorService;
     private final AppointmentService appointmentService;
     private final ReviewService reviewService;
+    private final LaboratoryService laboratoryService;
 
     public PatientController(UserService userService,
                             PatientService patientService,
                             DoctorService doctorService,
                             AppointmentService appointmentService,
-                            ReviewService reviewService) {
+                            ReviewService reviewService,
+                            LaboratoryService laboratoryService) {
         this.userService = userService;
         this.patientService = patientService;
         this.doctorService = doctorService;
         this.appointmentService = appointmentService;
         this.reviewService = reviewService;
+        this.laboratoryService = laboratoryService;
     }
 
     @GetMapping("/dashboard")
@@ -158,5 +161,30 @@ public class PatientController {
         userService.deleteUser(user.getId());
 
         return "redirect:/logout";
+    }
+
+    @GetMapping("/search-labs")
+    public String searchLaboratories(@RequestParam(value = "location", required = false) String location,
+                                    Model model) {
+        List<Laboratory> laboratories = laboratoryService.searchLaboratories(null, location);
+        List<String> locations = laboratoryService.getAllLocations();
+
+        model.addAttribute("laboratories", laboratories);
+        model.addAttribute("locations", locations);
+        model.addAttribute("selectedLocation", location);
+
+        return "patient/search-labs";
+    }
+
+    @GetMapping("/laboratory/{id}")
+    public String viewLaboratoryProfile(@PathVariable Long id, Model model) {
+        Laboratory laboratory = laboratoryService.getLaboratoryById(id)
+                .orElseThrow(() -> new RuntimeException("Laboratory not found"));
+
+        List<Review> reviews = reviewService.getReviewsForLab(laboratory);
+
+        model.addAttribute("laboratory", laboratory);
+        model.addAttribute("reviews", reviews);
+        return "patient/laboratory-profile";
     }
 }

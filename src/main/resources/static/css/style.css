@@ -44,17 +44,15 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--white);
     text-decoration: none;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    fill: var(--white);
+.logo-img {
+    height: 60px;
+    width: auto;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
 }
 
 .nav-links {
