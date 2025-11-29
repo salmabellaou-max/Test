@@ -480,3 +480,45 @@ th {
 tr:hover {
     background: var(--off-white);
 }
+
+/* Feature Boxes */
+.feature-box {
+    background: var(--off-white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--light-green);
+    transition: all 0.3s;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.15);
+    border-left-color: var(--primary-green);
+}
+
+.feature-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Specialty Badge */
+.specialty-badge {
+    background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.specialty-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+}

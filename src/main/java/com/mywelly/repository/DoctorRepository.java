@@ -20,8 +20,8 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
     @Query("SELECT d FROM Doctor d WHERE " +
            "(:name IS NULL OR LOWER(d.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
-           "(:specialty IS NULL OR d.specialty = :specialty) AND " +
-           "(:location IS NULL OR d.location = :location) AND " +
+           "(:specialty IS NULL OR :specialty = '' OR LOWER(d.specialty) = LOWER(:specialty)) AND " +
+           "(:location IS NULL OR :location = '' OR LOWER(d.location) = LOWER(:location)) AND " +
            "(:minPrice IS NULL OR d.consultationFee >= :minPrice) AND " +
            "(:maxPrice IS NULL OR d.consultationFee <= :maxPrice) " +
            "ORDER BY d.averageRating DESC")
