@@ -4,34 +4,34 @@
 
 MyWelly is a comprehensive healthcare appointment booking platform designed for Morocco. It connects patients with doctors and laboratories, providing a seamless experience for booking appointments, managing medical records, and leaving reviews.
 
-## 🌟 Features
+## Features
 
 ### For Patients
-- ✅ **Easy Registration & Login** with secure authentication
-- 🔍 **Advanced Search** - Find doctors by name, specialty, location (Moroccan cities), and price
-- 📅 **Book Appointments** with real-time availability
-- ✏️ **Modify or Cancel** appointments
-- ⭐ **Leave Reviews** and rate doctors (1-5 stars)
-- 📱 **Email Notifications** for appointment reminders
-- 👤 **Profile Management** - Update email, change password, delete account
-- 📊 **View Appointment History** - Track completed, cancelled, and upcoming appointments
+- **Easy Registration & Login** with secure authentication
+- **Advanced Search** - Find doctors by name, specialty, location (Moroccan cities), and price
+- **Book Appointments** with real-time availability
+- **Modify or Cancel** appointments
+- **Leave Reviews** and rate doctors (1-5 stars)
+- **Email Notifications** for appointment reminders
+- **Profile Management** - Update email, change password, delete account
+- **View Appointment History** - Track completed, cancelled, and upcoming appointments
 
 ### For Doctors
-- ✅ **Professional Registration** with specialty, location, and consultation fees
-- 📋 **Dashboard** showing upcoming appointments and statistics
-- 👥 **View Patient Details** including phone numbers
-- ❌ **Cancel Appointments** with mandatory reason
-- ⭐ **View Reviews** from patients
-- 📍 **Update Location** and other profile information
-- 📊 **Performance Metrics** - Average rating and total reviews
+- **Professional Registration** with specialty, location, and consultation fees
+- **Dashboard** showing upcoming appointments and statistics
+- **View Patient Details** including phone numbers
+- **Cancel Appointments** with mandatory reason
+- **View Reviews** from patients
+- **Update Location** and other profile information
+- **Performance Metrics** - Average rating and total reviews
 
 ### For Laboratories
-- ✅ **Laboratory Registration** with location and working hours
-- 📋 **Dashboard** with rating statistics
-- ⭐ **View Reviews** from patients
-- 👤 **Profile Management**
+- **Laboratory Registration** with location and working hours
+- **Dashboard** with rating statistics
+- **View Reviews** from patients
+- **Profile Management**
 
-## 🛠 Technology Stack
+## Technology Stack
 
 - **Backend:** Java 17, Spring Boot 3.1.5
 - **Security:** Spring Security with BCrypt password encoding
@@ -39,13 +39,13 @@ MyWelly is a comprehensive healthcare appointment booking platform designed for 
 - **Frontend:** Thymeleaf, HTML5, CSS3
 - **Build Tool:** Maven
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Java JDK 17 or higher
 - Maven 3.6+
 - Git
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -75,7 +75,7 @@ The application will start on `http://localhost:8080`
 - Username: `sa`
 - Password: (leave empty)
 
-## 👥 Test Accounts
+## Test Accounts
 
 The application comes pre-populated with sample data for testing:
 
@@ -102,7 +102,7 @@ The application comes pre-populated with sample data for testing:
 | lab.medanalysis@mywelly.ma | lab123 | MedAnalysis Rabat | Rabat |
 | lab.lifelab@mywelly.ma | lab123 | LifeLab Marrakech | Marrakech |
 
-## 🧪 Complete Testing Guide
+## Complete Testing Guide
 
 ### Test 1: Patient Registration & Login
 
@@ -120,13 +120,13 @@ The application comes pre-populated with sample data for testing:
      - Phone: `+212612999999`
      - Username: `testpatient`
    - Click "Create Account"
-   - ✅ Verify you're redirected to login page with success message
+   - Verify you're redirected to login page with success message
 
 2. **Login:**
    - Enter email: `testpatient@email.com`
    - Enter password: `test123`
    - Click "Login"
-   - ✅ Verify you're redirected to patient dashboard
+   - Verify you're redirected to patient dashboard
 
 ### Test 2: Search Functionality (All Filters)
 
@@ -135,32 +135,32 @@ The application comes pre-populated with sample data for testing:
 3. **Test Search by Name:**
    - Type "Hassan" in search box
    - Click "Search"
-   - ✅ Verify Dr. Hassan Alami appears
+   - Verify Dr. Hassan Alami appears
 
 4. **Test Filter by Specialty:**
    - Select "Cardiology" from Specialty dropdown
-   - ✅ Verify only Cardiology doctors appear
+   - Verify only Cardiology doctors appear
 
 5. **Test Filter by City:**
    - Select "Casablanca" from City dropdown
-   - ✅ Verify only Casablanca-based doctors appear
+   - Verify only Casablanca-based doctors appear
 
 6. **Test Filter by Price:**
    - Enter Min Price: `300`
    - Enter Max Price: `500`
-   - ✅ Verify only doctors with fees between 300-500 MAD appear
+   - Verify only doctors with fees between 300-500 MAD appear
 
 7. **Test Combined Filters:**
    - Specialty: "Cardiology"
    - City: "Casablanca"
    - Min Price: `400`
    - Max Price: `600`
-   - ✅ Verify correct filtering
+   - Verify correct filtering
 
 ### Test 3: View Doctor Profile
 
 1. From search results, click "View Profile" on any doctor
-2. ✅ Verify all information is displayed:
+2. Verify all information is displayed:
    - Doctor name, specialty, location
    - Rating and review count
    - Phone number
@@ -176,16 +176,16 @@ The application comes pre-populated with sample data for testing:
    - Select a future date (e.g., tomorrow)
    - Select a time slot (e.g., "10:00")
    - Click "Confirm Booking"
-   - ✅ Verify success message and redirect to dashboard
+   - Verify success message and redirect to dashboard
 
 2. **Verify Appointment Appears:**
    - Go to Patient Dashboard
-   - ✅ Verify appointment appears in "Upcoming Appointments"
-   - ✅ Verify it shows: doctor name, specialty, location, date, time, fee
+   - Verify appointment appears in "Upcoming Appointments"
+   - Verify it shows: doctor name, specialty, location, date, time, fee
 
 3. **Test Double Booking Prevention:**
    - Try to book same doctor, same date, same time
-   - ✅ Verify error message: "Time slot already booked"
+   - Verify error message: "Time slot already booked"
 
 ### Test 5: Cancel Appointment (Patient)
 
@@ -193,11 +193,11 @@ The application comes pre-populated with sample data for testing:
    - Find an upcoming appointment
    - Click "Cancel Appointment"
    - Confirm cancellation in popup
-   - ✅ Verify success message
+   - Verify success message
 
 2. **Verify Cancellation:**
-   - ✅ Verify appointment moves to "Appointment History"
-   - ✅ Verify status shows "CANCELLED_BY_PATIENT"
+   - Verify appointment moves to "Appointment History"
+   - Verify status shows "CANCELLED_BY_PATIENT"
 
 ### Test 6: Leave a Review
 
@@ -209,12 +209,12 @@ The application comes pre-populated with sample data for testing:
    - Select rating (e.g., 5 stars)
    - Enter comment: "Excellent doctor, very professional"
    - Click "Submit Review"
-   - ✅ Verify success message
+   - Verify success message
 
 3. **Verify Review Appears:**
    - Go to doctor's profile page
-   - ✅ Verify your review appears in "Patient Reviews"
-   - ✅ Verify star rating is displayed
+   - Verify your review appears in "Patient Reviews"
+   - Verify star rating is displayed
 
 ### Test 7: Profile Management (Patient)
 
@@ -222,87 +222,87 @@ The application comes pre-populated with sample data for testing:
    - Go to Profile
    - Change email to: `newemail@test.com`
    - Click "Update Email"
-   - ✅ Verify success message
+   - Verify success message
 
 2. **Change Password:**
    - Enter new password: `newpass123`
    - Confirm password: `newpass123`
    - Click "Change Password"
-   - ✅ Verify success message
+   - Verify success message
    - Logout and login with new password
-   - ✅ Verify login works with new password
+   - Verify login works with new password
 
 3. **Delete Account:**
    - Go to Profile
    - Scroll to "Danger Zone"
    - Click "Delete Account"
    - Confirm deletion
-   - ✅ Verify redirect to homepage
+   - Verify redirect to homepage
    - Try to login with deleted account
-   - ✅ Verify login fails
+   - Verify login fails
 
 ### Test 8: Doctor Dashboard & Features
 
 1. **Login as Doctor** (`dr.hassan@mywelly.ma` / `doctor123`)
 
 2. **View Dashboard:**
-   - ✅ Verify statistics are displayed (upcoming appointments, reviews, rating)
-   - ✅ Verify upcoming appointments list shows patient details
+   - Verify statistics are displayed (upcoming appointments, reviews, rating)
+   - Verify upcoming appointments list shows patient details
 
 3. **Cancel Appointment (Doctor):**
    - Click "Cancel Appointment" on any upcoming appointment
    - Enter cancellation reason: "Emergency surgery scheduled"
    - Click "Confirm Cancellation"
-   - ✅ Verify success message
-   - ✅ Verify appointment is removed from list
+   - Verify success message
+   - Verify appointment is removed from list
 
 4. **Update Location:**
    - Go to Profile
    - Change location to different city (e.g., "Rabat")
    - Click "Update Location"
-   - ✅ Verify success message
+   - Verify success message
    - Login as patient and search
-   - ✅ Verify doctor appears in new city
+   - Verify doctor appears in new city
 
 ### Test 9: Laboratory Dashboard
 
 1. **Login as Laboratory** (`lab.biotech@mywelly.ma` / `lab123`)
 
 2. **View Dashboard:**
-   - ✅ Verify laboratory name is displayed
-   - ✅ Verify statistics (reviews, rating)
-   - ✅ Verify recent reviews section
+   - Verify laboratory name is displayed
+   - Verify statistics (reviews, rating)
+   - Verify recent reviews section
 
 3. **View Profile:**
    - Click "Profile"
-   - ✅ Verify all laboratory information is displayed
+   - Verify all laboratory information is displayed
 
 ### Test 10: Logout Functionality
 
 1. **From any account:**
    - Click "Logout" in navigation
-   - ✅ Verify redirect to homepage
-   - ✅ Verify cannot access protected pages
+   - Verify redirect to homepage
+   - Verify cannot access protected pages
    - Try to access `http://localhost:8080/patient/dashboard`
-   - ✅ Verify redirect to login page
+   - Verify redirect to login page
 
 ### Test 11: Security Features
 
 1. **Test Account Lockout:**
    - Try to login with wrong password 5 times
-   - ✅ Verify account gets locked after 5 attempts
-   - ✅ Verify appropriate error message
+   - Verify account gets locked after 5 attempts
+   - Verify appropriate error message
 
 2. **Test No-Show Blocking:**
    - Manually set patient's `no_show_count` to 3 in database
    - Try to login as that patient
-   - ✅ Verify account is blocked
+   - Verify account is blocked
 
 3. **Test Authentication:**
    - Try to access patient dashboard without login: `http://localhost:8080/patient/dashboard`
-   - ✅ Verify redirect to login page
+   - Verify redirect to login page
 
-## 📊 Database Schema
+## Database Schema
 
 The application uses the following main entities:
 
@@ -313,14 +313,14 @@ The application uses the following main entities:
 - **Appointments** - Appointment bookings and history
 - **Reviews** - Patient reviews for doctors and labs
 
-## 🎨 Design Features
+## Design Features
 
 - **Color Scheme:** Professional green and white theme
 - **Responsive Design:** Works on desktop and mobile
 - **MyWelly Logo:** Heart-shaped logo representing healthcare
 - **User-Friendly Interface:** Intuitive navigation and clean layout
 
-## 🔧 Configuration
+## Configuration
 
 ### Database Configuration
 
@@ -350,7 +350,7 @@ spring.mail.username=your-email@gmail.com
 spring.mail.password=your-app-password
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Test/
@@ -371,7 +371,7 @@ Test/
 └── README.md
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Port Already in Use
 ```bash
@@ -386,11 +386,11 @@ server.port=8081
 # Restart application
 ```
 
-## 🤝 Contributing
+## Contributing
 
 This is an academic project for the MyWelly healthcare platform.
 
-## 👥 Team
+## Team
 
 - **Safar Fatima Ezzahra**
 - **Elansari Zineb**
@@ -398,14 +398,14 @@ This is an academic project for the MyWelly healthcare platform.
 
 **Supervisor:** Fouad Imane
 
-## 📄 License
+## License
 
 This project is developed as part of an academic assignment.
 
-## 📞 Support
+## Support
 
 For issues or questions, please contact the development team.
 
 ---
 
-**MyWelly - Transforming Healthcare in Morocco** 💚🏥
+**MyWelly - Transforming Healthcare in Morocco**
