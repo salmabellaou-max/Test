@@ -170,7 +170,53 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="footer-logo-img">
+                    <h3 style="border: none; margin: 0; padding: 0;">MyWelly</h3>
+                </div>
+                <p>Your trusted healthcare booking platform in Morocco. Connecting patients with verified doctors and laboratories.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/signup}">Sign Up</a>
+                <a th:href="@{/login}">Login</a>
+                <a href="#about">About Us</a>
+                <a href="#privacy">Privacy Policy</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+212638713604">+212 638 713 604</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <a href="mailto:support@mywelly.ma">support@mywelly.ma</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⚲</span>
+                    <span>Casablanca, Morocco</span>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>Stay connected on social media</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mywelly.ma/" target="_blank" class="social-link" title="Instagram">IG</a>
+                    <a href="https://www.facebook.com/mywelly.morocco/" target="_blank" class="social-link" title="Facebook">FB</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>

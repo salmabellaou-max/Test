@@ -85,16 +85,14 @@
                     </div>
                     <div class="doctor-info">
                         <h3 th:text="${doctor.name}">Dr. Name</h3>
-                        <span class="verified-badge">✓ Verified</span>
+                        <span class="verified-badge">Verified</span>
 
                         <div class="doctor-specialty" th:text="${doctor.specialty}">Specialty</div>
                         <div class="doctor-location" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                            <span style="color: var(--light-green);">📍</span>
                             <span th:text="${doctor.location}">Location</span>
                         </div>
 
                         <div class="doctor-rating" style="margin: 1rem 0;">
-                            <div class="rating-stars">★★★★★</div>
                             <span class="rating-value" th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">4.5</span>
                             <span class="rating-text" style="color: #666;">
                                 (<span th:text="${doctor.totalReviews}">10</span> reviews)
@@ -117,7 +115,52 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="footer-logo-img">
+                    <h3 style="border: none; margin: 0; padding: 0;">MyWelly</h3>
+                </div>
+                <p>Your trusted healthcare booking platform in Morocco. Connecting patients with verified doctors and laboratories.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a th:href="@{/patient/dashboard}">Dashboard</a>
+                <a th:href="@{/patient/search}">Find Doctors</a>
+                <a th:href="@{/patient/search-labs}">Find Laboratories</a>
+                <a th:href="@{/patient/profile}">My Profile</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+212638713604">+212 638 713 604</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <a href="mailto:support@mywelly.ma">support@mywelly.ma</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⚲</span>
+                    <span>Casablanca, Morocco</span>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>Stay connected on social media</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mywelly.ma/" target="_blank" class="social-link" title="Instagram">IG</a>
+                    <a href="https://www.facebook.com/mywelly.morocco/" target="_blank" class="social-link" title="Facebook">FB</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
