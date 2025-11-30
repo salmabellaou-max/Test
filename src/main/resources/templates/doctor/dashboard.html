@@ -95,8 +95,9 @@
                 <div th:if="${!recentReviews.empty}">
                     <div class="review-card" th:each="review : ${recentReviews}">
                         <div class="review-header">
+                            <div class="review-avatar" th:text="${#strings.substring(review.patient.fullName, 0, 1)}">P</div>
                             <span class="review-author" th:text="${review.patient.fullName}">Patient</span>
-                            <span class="review-rating" style="color: var(--light-green); font-weight: bold;">
+                            <span class="review-rating">
                                 <span th:text="${review.rating}">5</span>/5
                             </span>
                         </div>

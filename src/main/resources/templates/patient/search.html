@@ -80,23 +80,35 @@
 
             <div class="doctor-grid">
                 <div class="doctor-card" th:each="doctor : ${doctors}">
+                    <div class="doctor-card-header">
+                        <div class="doctor-avatar" th:text="${#strings.substring(doctor.name, 0, 1)}">D</div>
+                    </div>
                     <div class="doctor-info">
                         <h3 th:text="${doctor.name}">Dr. Name</h3>
+                        <span class="verified-badge">✓ Verified</span>
+
                         <div class="doctor-specialty" th:text="${doctor.specialty}">Specialty</div>
-                        <div class="doctor-location"><span th:text="${doctor.location}">Location</span></div>
+                        <div class="doctor-location" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="color: var(--light-green);">📍</span>
+                            <span th:text="${doctor.location}">Location</span>
+                        </div>
 
-                        <div class="doctor-rating">
+                        <div class="doctor-rating" style="margin: 1rem 0;">
+                            <div class="rating-stars">★★★★★</div>
                             <span class="rating-value" th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">4.5</span>
-                            <span class="rating-text">(<span th:text="${doctor.totalReviews}">10</span> reviews)</span>
+                            <span class="rating-text" style="color: #666;">
+                                (<span th:text="${doctor.totalReviews}">10</span> reviews)
+                            </span>
                         </div>
 
-                        <div class="doctor-price">
-                            <span class="price-value" th:text="${doctor.consultationFee}">300</span> <span class="currency">MAD</span>
+                        <div class="doctor-price" style="margin: 1.5rem 0; padding: 1rem; background: rgba(82, 183, 136, 0.1); border-radius: 8px; text-align: center;">
+                            <span style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);" th:text="${doctor.consultationFee}">300</span>
+                            <span style="font-size: 1.2rem; color: #666;"> MAD</span>
                         </div>
 
-                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                            <a th:href="@{/patient/doctor/{id}(id=${doctor.id})}" class="btn btn-outline" style="flex: 1;">View Profile</a>
-                            <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="flex: 1;">Book Appointment</a>
+                        <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                            <a th:href="@{/patient/doctor/{id}(id=${doctor.id})}" class="btn btn-outline" style="flex: 1; padding: 0.75rem 1rem;">View Profile</a>
+                            <a th:href="@{/appointment/book/{id}(id=${doctor.id})}" class="btn btn-primary" style="flex: 1; padding: 0.75rem 1rem;">Book Now</a>
                         </div>
                     </div>
                 </div>
