@@ -9,10 +9,7 @@
     <header>
         <nav>
             <a href="/" class="logo">
-                <svg class="logo-icon" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-                <span>MyWelly</span>
+                <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="logo-img">
             </a>
             <ul class="nav-links">
                 <li><a th:href="@{/doctor/dashboard}">Dashboard</a></li>
@@ -44,7 +41,7 @@
                     <p>Total Reviews</p>
                 </div>
                 <div class="stat-card">
-                    <h3>⭐ <span th:text="${doctor.averageRating}">0.0</span></h3>
+                    <h3><span th:text="${#numbers.formatDecimal(doctor.averageRating, 1, 1)}">0.0</span>/5.0</h3>
                     <p>Average Rating</p>
                 </div>
             </div>
@@ -63,13 +60,13 @@
                         <div class="appointment-header">
                             <div>
                                 <div class="appointment-doctor" th:text="${appt.patient.fullName}">Patient Name</div>
-                                <div>📞 <span th:text="${appt.patient.phoneNumber}">Phone</span></div>
+                                <div style="color: #666;"><strong>Phone:</strong> <span th:text="${appt.patient.phoneNumber}">Phone</span></div>
                             </div>
                             <span class="appointment-status status-scheduled">Scheduled</span>
                         </div>
-                        <div style="margin: 1rem 0;">
-                            <strong>📅 Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
-                            <strong>🕐 Time:</strong> <span th:text="${appt.appointmentTime}">Time</span>
+                        <div style="margin: 1rem 0; color: #666;">
+                            <strong>Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
+                            <strong>Time:</strong> <span th:text="${appt.appointmentTime}">Time</span>
                         </div>
                         <button type="button" class="btn btn-danger"
                                 onclick="document.getElementById('cancelForm' + [[${appt.id}]]).style.display='block'">
@@ -99,8 +96,8 @@
                     <div class="review-card" th:each="review : ${recentReviews}">
                         <div class="review-header">
                             <span class="review-author" th:text="${review.patient.fullName}">Patient</span>
-                            <span class="review-rating">
-                                <span th:each="i : ${#numbers.sequence(1, review.rating)}">⭐</span>
+                            <span class="review-rating" style="color: var(--light-green); font-weight: bold;">
+                                <span th:text="${review.rating}">5</span>/5
                             </span>
                         </div>
                         <div class="review-comment" th:text="${review.comment}">Comment</div>
