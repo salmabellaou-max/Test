@@ -35,7 +35,7 @@
                 <div style="background: var(--off-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;" th:text="${doctor.name}">Dr. Name</h3>
                     <div th:text="${doctor.specialty}">Specialty</div>
-                    <div>📍 <span th:text="${doctor.location}">Location</span></div>
+                    <div><span th:text="${doctor.location}">Location</span></div>
                     <div style="margin-top: 1rem; font-size: 1.2rem; color: var(--primary-green); font-weight: bold;">
                         Fee: <span th:text="${doctor.consultationFee}">300</span> MAD
                     </div>
@@ -79,7 +79,43 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="footer-logo-img">
+                    <h3 style="border: none; margin: 0; padding: 0;">MyWelly</h3>
+                </div>
+                <p>Your trusted healthcare booking platform in Morocco. Connecting patients with verified doctors and laboratories.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a th:href="@{/patient/dashboard}">Dashboard</a>
+                <a th:href="@{/patient/search}">Find Doctors</a>
+                <a th:href="@{/patient/search-labs}">Find Laboratories</a>
+                <a th:href="@{/patient/profile}">My Profile</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+212638713604">+212 638 713 604</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <a href="mailto:support@mywelly.ma">support@mywelly.ma</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⚲</span>
+                    <span>Casablanca, Morocco</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

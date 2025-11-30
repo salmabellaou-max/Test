@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MyWelly</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/signup}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 style="color: var(--primary-green); margin-bottom: 2rem;">About MyWelly</h1>
+
+            <div class="card">
+                <h2 style="color: var(--primary-green); margin-bottom: 1rem;">Our Mission</h2>
+                <p>MyWelly is Morocco's leading healthcare booking platform, dedicated to transforming how Moroccans access healthcare services. We connect patients with verified doctors and laboratories across the country, making quality healthcare accessible to everyone.</p>
+                <p>Our mission is to simplify the healthcare journey by providing a seamless, transparent, and trustworthy platform where patients can find, compare, and book appointments with healthcare providers at their convenience.</p>
+            </div>
+
+            <div class="card">
+                <h2 style="color: var(--primary-green); margin-bottom: 1rem;">What We Offer</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                    <div>
+                        <h3 style="color: var(--light-green); margin-bottom: 0.5rem;">For Patients</h3>
+                        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                            <li>Search and compare doctors by specialty, location, and price</li>
+                            <li>Book appointments 24/7 with real-time availability</li>
+                            <li>Read verified reviews from real patients</li>
+                            <li>Access detailed doctor profiles with qualifications and experience</li>
+                            <li>Manage all appointments in one place</li>
+                            <li>Find nearby laboratories for medical tests</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--light-green); margin-bottom: 0.5rem;">For Healthcare Providers</h3>
+                        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                            <li>Increase visibility and reach more patients</li>
+                            <li>Manage appointments efficiently</li>
+                            <li>Build your online reputation through reviews</li>
+                            <li>Streamline practice administration</li>
+                            <li>Connect with patients across Morocco</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 style="color: var(--primary-green); margin-bottom: 1rem;">Why Choose MyWelly</h2>
+                <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div style="padding: 1.5rem; background: rgba(82, 183, 136, 0.1); border-radius: 12px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Verified Professionals</h3>
+                        <p>All doctors and laboratories on our platform are verified to ensure you receive care from qualified professionals.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(82, 183, 136, 0.1); border-radius: 12px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Transparent Pricing</h3>
+                        <p>View consultation fees upfront with no hidden charges. Know exactly what you'll pay before booking.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(82, 183, 136, 0.1); border-radius: 12px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Easy & Convenient</h3>
+                        <p>Book appointments anytime, anywhere. Our platform is available 24/7 for your convenience.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(82, 183, 136, 0.1); border-radius: 12px;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Nationwide Coverage</h3>
+                        <p>Access healthcare providers across major Moroccan cities including Casablanca, Rabat, Marrakech, Tangier, and more.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 style="color: var(--primary-green); margin-bottom: 1rem;">Our Values</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 1.5rem; text-align: center;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: var(--primary-green); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">T</div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Trust</h3>
+                        <p>Building trust through verified professionals and authentic reviews.</p>
+                    </div>
+                    <div>
+                        <div style="width: 60px; height: 60px; background: var(--primary-green); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">Q</div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Quality</h3>
+                        <p>Ensuring quality care by connecting you with the best healthcare providers.</p>
+                    </div>
+                    <div>
+                        <div style="width: 60px; height: 60px; background: var(--primary-green); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">A</div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Accessibility</h3>
+                        <p>Making healthcare accessible to all Moroccans, everywhere.</p>
+                    </div>
+                    <div>
+                        <div style="width: 60px; height: 60px; background: var(--primary-green); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">I</div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Innovation</h3>
+                        <p>Leveraging technology to improve healthcare delivery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, var(--primary-green), var(--light-green)); color: white; text-align: center;">
+                <h2 style="color: white; margin-bottom: 1rem;">Join MyWelly Today</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Whether you're looking for healthcare services or you're a healthcare provider wanting to expand your practice, MyWelly is here for you.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a th:href="@{/signup}" class="btn" style="background: white; color: var(--primary-green); padding: 1rem 2rem; font-weight: 600;">Sign Up Now</a>
+                    <a th:href="@{/}" class="btn btn-outline" style="border: 2px solid white; color: white; padding: 1rem 2rem; font-weight: 600;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="footer-logo-img">
+                    <h3 style="border: none; margin: 0; padding: 0;">MyWelly</h3>
+                </div>
+                <p>Your trusted healthcare booking platform in Morocco. Connecting patients with verified doctors and laboratories.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/signup}">Sign Up</a>
+                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/about}">About Us</a>
+                <a th:href="@{/privacy}">Privacy Policy</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+212638713604">+212 638 713 604</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <a href="mailto:support@mywelly.ma">support@mywelly.ma</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⚲</span>
+                    <span>Casablanca, Morocco</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

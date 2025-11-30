@@ -119,4 +119,14 @@ public class HomeController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+    @GetMapping("/privacy")
+    public String privacy() {
+        return "privacy";
+    }
 }

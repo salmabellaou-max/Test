@@ -52,14 +52,14 @@
                             <div>
                                 <div class="appointment-doctor" th:text="${appt.doctor.name}">Dr. Name</div>
                                 <div class="doctor-specialty" th:text="${appt.doctor.specialty}">Specialty</div>
-                                <div class="doctor-location">📍 <span th:text="${appt.doctor.location}">Location</span></div>
+                                <div class="doctor-location"><span th:text="${appt.doctor.location}">Location</span></div>
                             </div>
                             <span class="appointment-status status-scheduled">Scheduled</span>
                         </div>
                         <div style="margin: 1rem 0;">
-                            <strong>📅 Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
-                            <strong>🕐 Time:</strong> <span th:text="${appt.appointmentTime}">Time</span><br>
-                            <strong>💰 Fee:</strong> <span th:text="${appt.doctor.consultationFee}">Fee</span> MAD
+                            <strong>Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
+                            <strong>Time:</strong> <span th:text="${appt.appointmentTime}">Time</span><br>
+                            <strong>Fee:</strong> <span th:text="${appt.doctor.consultationFee}">Fee</span> MAD
                         </div>
                         <form th:action="@{/appointment/cancel/{id}(id=${appt.id})}" method="post" style="display: inline;">
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this appointment?')">Cancel Appointment</button>
@@ -104,7 +104,43 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="footer-logo-img">
+                    <h3 style="border: none; margin: 0; padding: 0;">MyWelly</h3>
+                </div>
+                <p>Your trusted healthcare booking platform in Morocco. Connecting patients with verified doctors and laboratories.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a th:href="@{/patient/dashboard}">Dashboard</a>
+                <a th:href="@{/patient/search}">Find Doctors</a>
+                <a th:href="@{/patient/search-labs}">Find Laboratories</a>
+                <a th:href="@{/patient/profile}">My Profile</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+212638713604">+212 638 713 604</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <a href="mailto:support@mywelly.ma">support@mywelly.ma</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⚲</span>
+                    <span>Casablanca, Morocco</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
