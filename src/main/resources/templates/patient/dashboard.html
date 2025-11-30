@@ -80,22 +80,30 @@
 
                 <ul class="appointment-list" th:if="${!pastAppointments.empty}">
                     <li class="appointment-item" th:each="appt : ${pastAppointments}"
-                        th:classappend="${appt.status == 'COMPLETED' ? 'completed' : 'cancelled'}">
+                        th:classappend="${appt.status.toString() == 'COMPLETED' ? 'completed' : 'cancelled'}">
                         <div class="appointment-header">
                             <div>
                                 <div class="appointment-doctor" th:text="${appt.doctor.name}">Dr. Name</div>
                                 <div class="doctor-specialty" th:text="${appt.doctor.specialty}">Specialty</div>
                             </div>
                             <span class="appointment-status"
-                                  th:classappend="${appt.status == 'COMPLETED' ? 'status-completed' : 'status-cancelled'}"
+                                  th:classappend="${appt.status.toString() == 'COMPLETED' ? 'status-completed' : 'status-cancelled'}"
                                   th:text="${appt.status}">Status</span>
                         </div>
                         <div>
                             <strong>Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
                             <strong>Time:</strong> <span th:text="${appt.appointmentTime}">Time</span>
                         </div>
-                        <div th:if="${appt.status == T(com.mywelly.model.Appointment.AppointmentStatus).COMPLETED}" style="margin-top: 1rem;">
-                            <a th:href="@{/review/doctor/{id}(id=${appt.doctor.id})}" class="btn" style="background-color: var(--primary-green); color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; display: inline-block; transition: all 0.3s;">Leave a Review</a>
+                        <!-- Always show the button for testing -->
+                        <div style="margin-top: 1rem;">
+                            <a th:href="@{/review/doctor/{id}(id=${appt.doctor.id})}"
+                               class="btn"
+                               style="background-color: var(--primary-green); color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; display: inline-block; transition: all 0.3s;">
+                               Leave a Review
+                            </a>
+                            <span style="margin-left: 1rem; color: #666; font-size: 0.9rem;">
+                                Status: <span th:text="${appt.status}"></span>
+                            </span>
                         </div>
                     </li>
                 </ul>
