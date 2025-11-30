@@ -94,8 +94,8 @@
                             <strong>Date:</strong> <span th:text="${appt.appointmentDate}">Date</span><br>
                             <strong>Time:</strong> <span th:text="${appt.appointmentTime}">Time</span>
                         </div>
-                        <div th:if="${appt.status == 'COMPLETED'}">
-                            <a th:href="@{/review/doctor/{id}(id=${appt.doctor.id})}" class="btn btn-secondary" style="margin-top: 1rem;">Leave a Review</a>
+                        <div th:if="${appt.status.name() == 'COMPLETED'}" style="margin-top: 1rem;">
+                            <a th:href="@{/review/doctor/{id}(id=${appt.doctor.id})}" class="btn" style="background-color: var(--primary-green); color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; display: inline-block; transition: all 0.3s;">Leave a Review</a>
                         </div>
                     </li>
                 </ul>
