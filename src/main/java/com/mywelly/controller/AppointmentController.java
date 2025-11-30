@@ -85,4 +85,20 @@ public class AppointmentController {
 
         return "redirect:/dashboard";
     }
+
+    @PostMapping("/complete/{appointmentId}")
+    public String completeAppointment(@PathVariable Long appointmentId,
+                                     RedirectAttributes redirectAttributes) {
+        appointmentService.markAppointmentAsCompleted(appointmentId);
+        redirectAttributes.addFlashAttribute("success", "Appointment marked as completed");
+        return "redirect:/doctor/dashboard";
+    }
+
+    @PostMapping("/no-show/{appointmentId}")
+    public String markNoShow(@PathVariable Long appointmentId,
+                            RedirectAttributes redirectAttributes) {
+        appointmentService.markAppointmentAsNoShow(appointmentId);
+        redirectAttributes.addFlashAttribute("success", "Appointment marked as no show");
+        return "redirect:/doctor/dashboard";
+    }
 }

@@ -88,6 +88,20 @@ public class AppointmentService {
         appointmentRepository.save(appointment);
     }
 
+    public void markAppointmentAsCompleted(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+        appointment.setStatus(AppointmentStatus.COMPLETED);
+        appointmentRepository.save(appointment);
+    }
+
+    public void markAppointmentAsNoShow(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+        appointment.setStatus(AppointmentStatus.NO_SHOW);
+        appointmentRepository.save(appointment);
+    }
+
     public Optional<Appointment> getAppointmentById(Long id) {
         return appointmentRepository.findById(id);
     }

@@ -7,6 +7,16 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-logo-container">
+            <img th:src="@{/images/logo.jpg}" alt="MyWelly Logo" class="splash-logo">
+            <div class="splash-text">MyWelly</div>
+        </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="page-content">
     <header>
         <nav>
             <a href="/" class="logo">
@@ -129,5 +139,31 @@
             <p>&copy; 2025 MyWelly - Transforming Healthcare in Morocco. All rights reserved.</p>
         </div>
     </footer>
+    </div>
+    <!-- End Page Content -->
+
+    <script>
+        // Splash screen animation
+        window.addEventListener('load', function() {
+            const splash = document.getElementById('splash-screen');
+            const pageContent = document.querySelector('.page-content');
+
+            // After 2 seconds, move splash screen to top
+            setTimeout(function() {
+                splash.classList.add('move-up');
+
+                // After the move animation completes (0.8s), fade it out and show content
+                setTimeout(function() {
+                    splash.classList.add('fade-out');
+                    pageContent.classList.add('visible');
+
+                    // Remove splash screen from DOM after fade completes
+                    setTimeout(function() {
+                        splash.remove();
+                    }, 800);
+                }, 800);
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
